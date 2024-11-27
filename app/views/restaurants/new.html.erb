@@ -1,0 +1,31 @@
+<h1>New Restaurant</h1>
+
+<%= form_with model: @restaurant, url: restaurants_path, method: :post, local: true do |form| %>
+  <div>
+    <p><strong>name</strong></p>
+    <%= form.text_field :name, placeholder: "Enter restaurant name" %>
+  </div>
+
+  <div>
+    <p><strong>Address</strong></p>
+    <%= form.text_area :address, placeholder: "Enter restaurant adress" %>
+  </div>
+
+  <div>
+    <p><strong>Phone Number</strong></p>
+    <%= form.text_area :phone_number, placeholder: "Enter restaurant phone number" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :category %>
+    <%= form.select :category, options_for_select(["chinese", "italian", "japanese", "french", "belgian"], @restaurant.category), {}, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.submit "Create Restaurant", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+  <div>
+<%= link_to "Return to Tasks", restaurants_path, class: "btn btn-secondary" %>
+  </div>
